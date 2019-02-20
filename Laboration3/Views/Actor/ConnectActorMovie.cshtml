@@ -1,0 +1,33 @@
+﻿@model Laboration3.Models.ViewModelConnectActorMovie
+@{
+    ViewData["Title"] = "ConnectActorMovie";
+}
+
+<h2>ConnectActorMovie</h2>
+<p>Eventuella felmeddelanden: @ViewBag.error</p>
+
+<div class="row">
+    <div class="form-group col-md-4">
+        <form asp-action="SendConnectActorMovie">
+            <div class="form-group">
+                <select class="form-control" id="Actor" name="Actor">
+                    @foreach (Laboration3.Models.ActorDetail actorDetail in Model.ActorList)
+                    {
+                        <option value=" @actorDetail.Id ">@actorDetail.Forename @actorDetail.Surname</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <select class="form-control" id="Movie" name="Movie">
+                    @foreach (Laboration3.Models.MovieDetail MovieDetail in Model.MovieList)
+                    {
+                        <option value=" @MovieDetail.Id ">@MovieDetail.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Koppla" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>

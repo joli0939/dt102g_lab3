@@ -1,0 +1,133 @@
+﻿@model IEnumerable<Laboration3.Models.MovieDetail>
+
+@{
+    ViewData["Title"] = "ListMovies";
+}
+
+<h2>Filmer</h2>
+
+<h3>Sök film</h3>
+<div class="row">
+    <div class="form-group col-md-4">
+        <form asp-action="SearchMovie">
+            <div class="form-group">
+                <input type="text" class="form-control" id="Query" name="Query" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Sök" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@if (Model != null)
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @if (ViewBag.NameOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=NameDes">@Html.DisplayNameFor(model => model.Name)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=Name">@Html.DisplayNameFor(model => model.Name)</a>
+                    }
+
+                </th>
+                <th>
+                    @if (ViewBag.GenreOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=GenreDes">@Html.DisplayNameFor(model => model.Genre)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=Genre">@Html.DisplayNameFor(model => model.Genre)</a>
+                    }
+                </th>
+                <th>
+                    @if (ViewBag.PlaytimeOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=PlaytimeDes">@Html.DisplayNameFor(model => model.Playtime)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=Playtime">@Html.DisplayNameFor(model => model.Playtime)</a>
+                    }
+                </th>
+                <th>
+                    @if (ViewBag.YearOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=YearDes">@Html.DisplayNameFor(model => model.Year)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=Year">@Html.DisplayNameFor(model => model.Year)</a>
+                    }
+                </th>
+                <th>
+                    @if (ViewBag.IMDBScoreOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=IMDBScoreDes">@Html.DisplayNameFor(model => model.IMDBScore)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=IMDBScore">@Html.DisplayNameFor(model => model.IMDBScore)</a>
+                    }
+                </th>
+                <th>
+                    @if (ViewBag.DirectorOrder == "Asc")
+                    {
+                        <a href="ListMovies?sort=DirectorDes">@Html.DisplayNameFor(model => model.Director)</a>
+                    }
+                    else
+                    {
+                        <a href="ListMovies?sort=Director">@Html.DisplayNameFor(model => model.Director)</a>
+                    }
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+    @foreach (var item in Model)
+    {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Genre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Playtime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Year)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IMDBScore)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Director)
+                </td>
+                <td class="text-center">
+                    <form asp-action="DeleteMovie" method="post">
+                        <a asp-action="EditMovie" class="btn btn-sm btn-warning" asp-route-movieId="@item.Id">Ändra</a>
+                        <input type="hidden" name="movieId" value="@item.Id" />
+                        <button type="submit" class="btn btn-danger btn-sm">Ta bort</button>
+                    </form>
+                </td>
+            </tr>
+    }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>Inget sökresultat</p>
+}
+
+<a asp-action="InsertMovieForm">Lägg till film</a>
+
+<p>Eventuellt felmeddelande: @ViewBag.error @ViewBag.editError @ViewBag.deleteError</p>

@@ -1,0 +1,63 @@
+﻿@model Laboration3.Models.ViewModelAM
+@{
+    ViewData["Title"] = "FilterActor";
+}
+
+@{ 
+    int i = 0;
+    if (ViewData["SortValue"] != null) { i = (int)ViewData["SortValue"]; }
+}
+
+<h2>FilterActor</h2>
+<p>Eventuella felmeddelanden: @ViewBag.error</p>
+<p>Eventuellt fel 2: @ViewBag.connect</p>
+<p>Eventuellt fel 3: @ViewBag.deleteConnect</p>
+<div class="row">
+    <div class="form-group col-md-4">
+        <form asp-action="FilterActor">
+            <div class="form-group">
+                <select class="form-control" id="Actor" name="Actor">
+                    @foreach (Laboration3.Models.ActorDetail actorDetail in Model.ActorList)
+                    {
+                        @if (actorDetail.Id != i)
+                        {
+                            <option value=" @actorDetail.Id ">@actorDetail.Forename @actorDetail.Surname</option>
+                        }
+                        else
+                        {
+                            <option value=" @actorDetail.Id " selected>@actorDetail.Forename @actorDetail.Surname</option>
+                        }                        
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Filtrera" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>Inskickat värde: @ViewData["SortValue"]</p>
+
+<table class="table">
+    <tr>
+        <th>Förnamn</th>
+        <th>Efternamn</th>
+        <th>Film</th>
+        <th></th>
+    </tr>
+    @foreach (Laboration3.Models.ActorMovie actorMovieDetail in Model.ActorMovieList)
+    {
+        <tr>
+            <td>@actorMovieDetail.Forename</td>
+            <td>@actorMovieDetail.Surname</td>
+            <td>@actorMovieDetail.Movie</td>
+            <td>
+                <form asp-action="DeleteConnection" method="post">
+                    <input type="hidden" name="actorId" value="@actorMovieDetail.ActorId" />
+                    <button type="submit" class="btn btn-danger btn-sm">Ta bort koppling</button>
+                </form>
+            </td>
+        </tr>
+    }
+</table>

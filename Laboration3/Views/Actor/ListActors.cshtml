@@ -1,0 +1,55 @@
+﻿@model IEnumerable<Laboration3.Models.ActorDetail>
+
+@{
+    ViewData["Title"] = "ListActors";
+}
+
+<h2>ListActors</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Forename)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateOfBirth)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Forename)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfBirth)
+            </td>
+            <td class="text-center">
+                <form asp-action="DeleteActor" method="post">
+                    <a asp-action="EditActor" class="btn btn-sm btn-warning" asp-route-actorId="@item.Id">Ändra</a>
+                    <input type="hidden" name="actorId" value="@item.Id" />
+                    <button type="submit" class="btn btn-danger btn-sm">Ta bort</button>
+                </form>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<a asp-action="InsertActorForm">Lägg till skådespelare</a>
+
+<p>Eventuellt felmeddelande: @ViewBag.error @ViewBag.editError @ViewBag.deleteError</p>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
