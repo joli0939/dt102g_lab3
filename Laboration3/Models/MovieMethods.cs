@@ -327,5 +327,143 @@ namespace Laboration3.Models
                 dbConnection.Close();
             }
         }
+
+        public List<MovieDetail> GetMovieListSorted(out string errormsg, string sortBy)
+        {
+            // Skapa sql-anslutning
+            SqlConnection dbConnection = new SqlConnection();
+
+            // Koppla mot SQL-server
+            dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Laboration3;Integrated Security=True";
+
+            // SQL-sträng för att lägga till i databasen
+            String sqlstring = "SELECT * FROM Movie ORDER BY CASE @sort WHEN 'Name' THEN [Name] WHEN 'Genre' THEN [Genre] WHEN 'Playtime' THEN CAST ([Playtime] AS NVARCHAR) WHEN 'Year' THEN CAST ([Year] AS NVARCHAR) WHEN 'IMDBScore' THEN CAST ([IMDBScore] AS NVARCHAR) WHEN 'Director' THEN [Director] END";
+
+            SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
+
+            dbCommand.Parameters.Add("sort", SqlDbType.NVarChar).Value = sortBy;
+
+            // Skapa en adapter
+            SqlDataAdapter myAdapter = new SqlDataAdapter(dbCommand);
+            DataSet myDS = new DataSet();
+
+            List<MovieDetail> MovieList = new List<MovieDetail>();
+
+            try
+            {
+                dbConnection.Open();
+
+                // Fyller dataset
+                myAdapter.Fill(myDS, "myMovie");
+
+                int count = 0;
+                int i = 0;
+                count = myDS.Tables["myMovie"].Rows.Count;
+
+                if (count > 0)
+                {
+                    while (i < count)
+                    {
+                        MovieDetail md = new MovieDetail();
+                        md.Name = myDS.Tables["myMovie"].Rows[i]["Name"].ToString();
+                        md.Genre = myDS.Tables["myMovie"].Rows[i]["Genre"].ToString();
+                        md.Playtime = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Playtime"]);
+                        md.Year = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Year"]);
+                        md.IMDBScore = Convert.ToDouble(myDS.Tables["myMovie"].Rows[i]["IMDBScore"]);
+                        md.Director = myDS.Tables["myMovie"].Rows[i]["Director"].ToString();
+                        md.Id = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Id"]);
+
+                        i++;
+                        MovieList.Add(md);
+                    }
+
+                    errormsg = "";
+                    return MovieList;
+                }
+                else
+                {
+                    errormsg = "Det hämtades inga poster";
+                    return (null);
+                }
+            }
+            catch (Exception e)
+            {
+                errormsg = e.Message;
+                return null;
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
+        }
+
+        public List<MovieDetail> GetMovieListSortedDescending(out string errormsg, string sortBy)
+        {
+            // Skapa sql-anslutning
+            SqlConnection dbConnection = new SqlConnection();
+
+            // Koppla mot SQL-server
+            dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Laboration3;Integrated Security=True";
+
+            // SQL-sträng för att lägga till i databasen
+            String sqlstring = "SELECT * FROM Movie ORDER BY CASE @sort WHEN 'Name' THEN [Name] WHEN 'Genre' THEN [Genre] WHEN 'Playtime' THEN CAST ([Playtime] AS NVARCHAR) WHEN 'Year' THEN CAST ([Year] AS NVARCHAR) WHEN 'IMDBScore' THEN CAST ([IMDBScore] AS NVARCHAR) WHEN 'Director' THEN [Director] END DESC";
+
+            SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
+
+            dbCommand.Parameters.Add("sort", SqlDbType.NVarChar).Value = sortBy;
+
+            // Skapa en adapter
+            SqlDataAdapter myAdapter = new SqlDataAdapter(dbCommand);
+            DataSet myDS = new DataSet();
+
+            List<MovieDetail> MovieList = new List<MovieDetail>();
+
+            try
+            {
+                dbConnection.Open();
+
+                // Fyller dataset
+                myAdapter.Fill(myDS, "myMovie");
+
+                int count = 0;
+                int i = 0;
+                count = myDS.Tables["myMovie"].Rows.Count;
+
+                if (count > 0)
+                {
+                    while (i < count)
+                    {
+                        MovieDetail md = new MovieDetail();
+                        md.Name = myDS.Tables["myMovie"].Rows[i]["Name"].ToString();
+                        md.Genre = myDS.Tables["myMovie"].Rows[i]["Genre"].ToString();
+                        md.Playtime = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Playtime"]);
+                        md.Year = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Year"]);
+                        md.IMDBScore = Convert.ToDouble(myDS.Tables["myMovie"].Rows[i]["IMDBScore"]);
+                        md.Director = myDS.Tables["myMovie"].Rows[i]["Director"].ToString();
+                        md.Id = Convert.ToInt32(myDS.Tables["myMovie"].Rows[i]["Id"]);
+
+                        i++;
+                        MovieList.Add(md);
+                    }
+
+                    errormsg = "";
+                    return MovieList;
+                }
+                else
+                {
+                    errormsg = "Det hämtades inga poster";
+                    return (null);
+                }
+            }
+            catch (Exception e)
+            {
+                errormsg = e.Message;
+                return null;
+            }
+            finally
+            {
+                dbConnection.Close();
+            }
+        }
     }
 }

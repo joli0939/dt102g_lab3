@@ -45,96 +45,45 @@ namespace Laboration3.Controllers
         {
             List<MovieDetail> MovieList = new List<MovieDetail>();
             MovieMethods mm = new MovieMethods();
-            string error = "";
+            string error = "";         
 
-            MovieList = mm.GetMovieList(out error);
+            if (sort == null)
+            {
+                MovieList = mm.GetMovieList(out error);
+                sort = "abyss";
+                var sortValue = new CookieOptions();
+                sortValue.Expires = DateTime.Now.AddMinutes(10);
+                Response.Cookies.Append("SortValue", sort, sortValue);
+            }
+            else
+            {
+
+                if (sort == Request.Cookies["SortValue"])
+                {
+                    MovieList = mm.GetMovieListSortedDescending(out error, sort);
+
+                    sort = "abyss";
+                    var sortValue = new CookieOptions();
+                    sortValue.Expires = DateTime.Now.AddMinutes(10);
+                    Response.Cookies.Append("SortValue", sort, sortValue);
+                }
+                else
+                {
+                    MovieList = mm.GetMovieListSorted(out error, sort);
+
+                    var sortValue = new CookieOptions();
+                    sortValue.Expires = DateTime.Now.AddMinutes(10);
+                    Response.Cookies.Append("SortValue", sort, sortValue);
+                }
+                               
+            }
 
             ViewBag.error = error;
             ViewBag.editError = HttpContext.Session.GetString("errorEdit");
             ViewBag.deleteError = HttpContext.Session.GetString("errorDelete");
-            ViewBag.sort = sort;
 
-
-            switch (sort)
-            {
-                case "Name":
-                    List<MovieDetail> SortedByName = MovieList.OrderBy(o => o.Name).ToList();
-                    ViewBag.NameOrder = "Asc";
-                    return View(SortedByName);
-
-                case "NameDes":
-                    List<MovieDetail> SortedByNameDes = MovieList.OrderByDescending(o => o.Name).ToList();
-                    ViewBag.NameOrder = "Des";
-                    return View(SortedByNameDes);
-
-
-
-                case "Genre":
-                    List<MovieDetail> SortedByGenre = MovieList.OrderBy(o => o.Genre).ToList();
-                    ViewBag.GenreOrder = "Asc";
-                    return View(SortedByGenre);
-
-                case "GenreDes":
-                    List<MovieDetail> SortedByGenreDes = MovieList.OrderByDescending(o => o.Genre).ToList();
-                    ViewBag.GenreOrder = "Des";
-                    return View(SortedByGenreDes);
-
-
-
-                case "Playtime":
-                    List<MovieDetail> SortedByPlaytime = MovieList.OrderBy(o => o.Playtime).ToList();
-                    ViewBag.PlaytimeOrder = "Asc";
-                    return View(SortedByPlaytime);
-
-                case "PlaytimeDes":
-                    List<MovieDetail> SortedByPlaytimeDes = MovieList.OrderByDescending(o => o.Playtime).ToList();
-                    ViewBag.PlaytimeOrder = "Des";
-                    return View(SortedByPlaytimeDes);
-
-
-
-                case "Year":
-                    List<MovieDetail> SortedByYear = MovieList.OrderBy(o => o.Year).ToList();
-                    ViewBag.YearOrder = "Asc";
-                    return View(SortedByYear);
-
-                case "YearDes":
-                    List<MovieDetail> SortedByYearDes = MovieList.OrderByDescending(o => o.Year).ToList();
-                    ViewBag.YearOrder = "Des";
-                    return View(SortedByYearDes);
-
-
-
-                case "IMDBScore":
-                    List<MovieDetail> SortedByIMDBScore = MovieList.OrderBy(o => o.IMDBScore).ToList();
-                    ViewBag.IMDBScoreOrder = "Asc";
-                    return View(SortedByIMDBScore);
-
-                case "IMDBScoreDes":
-                    List<MovieDetail> SortedByIMDBScoreDes = MovieList.OrderByDescending(o => o.IMDBScore).ToList();
-                    ViewBag.IMDBScoreOrder = "Des";
-                    return View(SortedByIMDBScoreDes);
-
-
-
-                case "Director":
-                    List<MovieDetail> SortedByDirector = MovieList.OrderBy(o => o.Director).ToList();
-                    ViewBag.DirectorOrder = "Asc";
-                    return View(SortedByDirector);
-
-                case "DirectorDes":
-                    List<MovieDetail> SortedByDirectorDes = MovieList.OrderByDescending(o => o.Director).ToList();
-                    ViewBag.DirectorOrder = "Des";
-                    return View(SortedByDirectorDes);
-
-
-
-                default:
-                        return View(MovieList);
-
-            }
+            return View(MovieList);
             
-
         }
         
         [HttpGet]

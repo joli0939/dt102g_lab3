@@ -26,65 +26,22 @@
         <thead>
             <tr>
                 <th>
-                    @if (ViewBag.NameOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=NameDes">@Html.DisplayNameFor(model => model.Name)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=Name">@Html.DisplayNameFor(model => model.Name)</a>
-                    }
-
+                    <a href="ListMovies?sort=Name">@Html.DisplayNameFor(model => model.Name)</a>
                 </th>
                 <th>
-                    @if (ViewBag.GenreOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=GenreDes">@Html.DisplayNameFor(model => model.Genre)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=Genre">@Html.DisplayNameFor(model => model.Genre)</a>
-                    }
+                    <a href="ListMovies?sort=Genre">@Html.DisplayNameFor(model => model.Genre)</a>
                 </th>
                 <th>
-                    @if (ViewBag.PlaytimeOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=PlaytimeDes">@Html.DisplayNameFor(model => model.Playtime)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=Playtime">@Html.DisplayNameFor(model => model.Playtime)</a>
-                    }
+                    <a href="ListMovies?sort=Playtime">@Html.DisplayNameFor(model => model.Playtime)</a>
                 </th>
                 <th>
-                    @if (ViewBag.YearOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=YearDes">@Html.DisplayNameFor(model => model.Year)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=Year">@Html.DisplayNameFor(model => model.Year)</a>
-                    }
+                    <a href="ListMovies?sort=Year">@Html.DisplayNameFor(model => model.Year)</a>
                 </th>
                 <th>
-                    @if (ViewBag.IMDBScoreOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=IMDBScoreDes">@Html.DisplayNameFor(model => model.IMDBScore)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=IMDBScore">@Html.DisplayNameFor(model => model.IMDBScore)</a>
-                    }
+                    <a href="ListMovies?sort=IMDBScore">@Html.DisplayNameFor(model => model.IMDBScore)</a>
                 </th>
                 <th>
-                    @if (ViewBag.DirectorOrder == "Asc")
-                    {
-                        <a href="ListMovies?sort=DirectorDes">@Html.DisplayNameFor(model => model.Director)</a>
-                    }
-                    else
-                    {
-                        <a href="ListMovies?sort=Director">@Html.DisplayNameFor(model => model.Director)</a>
-                    }
+                    <a href="ListMovies?sort=Director">@Html.DisplayNameFor(model => model.Director)</a>
                 </th>
                 <th></th>
             </tr>

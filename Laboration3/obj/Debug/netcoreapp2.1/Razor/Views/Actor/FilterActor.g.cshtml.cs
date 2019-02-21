@@ -104,7 +104,7 @@ using Laboration3.Models;
             WriteLiteral("</p>\r\n<div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n        ");
             EndContext();
             BeginContext(420, 936, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "77b2de2649e4422f9d65708dd6e37bed", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "56a50174d8094aae8d4b8b766f6cd2b5", async() => {
                 BeginContext(451, 111, true);
                 WriteLiteral("\r\n            <div class=\"form-group\">\r\n                <select class=\"form-control\" id=\"Actor\" name=\"Actor\">\r\n");
                 EndContext();
@@ -125,7 +125,7 @@ using Laboration3.Models;
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(785, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5fa8bf674f3b4f85bcc7417baee8402f", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9c59b9ada73644999fb8a302d613963a", async() => {
                     BeginContext(820, 20, false);
 #line 24 "C:\Users\admin\source\repos\Laboration3\Laboration3\Views\Actor\FilterActor.cshtml"
                                                          Write(actorDetail.Forename);
@@ -180,7 +180,7 @@ using Laboration3.Models;
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(984, 94, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "7921d07916384c729c4f54415043c7bf", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "cd1618b187234aa4923e793937104589", async() => {
                     BeginContext(1028, 20, false);
 #line 28 "C:\Users\admin\source\repos\Laboration3\Laboration3\Views\Actor\FilterActor.cshtml"
                                                                   Write(actorDetail.Forename);
@@ -310,7 +310,7 @@ using Laboration3.Models;
             WriteLiteral("</td>\r\n            <td>\r\n                ");
             EndContext();
             BeginContext(1855, 268, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "032aa550437d435a9917f9f880405f88", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "b67eac4318934b09ae4c81a50155dfb6", async() => {
                 BeginContext(1905, 57, true);
                 WriteLiteral("\r\n                    <input type=\"hidden\" name=\"actorId\"");
                 EndContext();
