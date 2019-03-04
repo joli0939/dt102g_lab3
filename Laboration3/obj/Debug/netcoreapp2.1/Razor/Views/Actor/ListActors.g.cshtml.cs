@@ -138,12 +138,12 @@ using Laboration3.Models;
             WriteLiteral("\r\n            </td>\r\n            <td class=\"text-center\">\r\n                ");
             EndContext();
             BeginContext(958, 354, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "145ae8aeb34f4d58aa830d131fd204e8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f048380902c4ffd8dae28487be0913e", async() => {
                 BeginContext(1003, 22, true);
                 WriteLiteral("\r\n                    ");
                 EndContext();
                 BeginContext(1025, 95, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c542efadaa454eb4adacfc45646e94bd", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3aff42903b624d7eabcebea5c559969e", async() => {
                     BeginContext(1111, 5, true);
                     WriteLiteral("Ändra");
                     EndContext();
@@ -218,7 +218,7 @@ WriteAttributeValue("", 1185, item.Id, 1185, 8, false);
             WriteLiteral("    </tbody>\r\n</table>\r\n\r\n");
             EndContext();
             BeginContext(1385, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fad6895fb36d4c0786553c512baad264", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "57accfb210ea4508a86311380fcb6659", async() => {
                 BeginContext(1417, 22, true);
                 WriteLiteral("Lägg till skådespelare");
                 EndContext();

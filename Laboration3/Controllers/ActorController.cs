@@ -188,11 +188,13 @@ namespace Laboration3.Controllers
         [HttpPost]
         public IActionResult DeleteConnection(IFormCollection col)
         {
-            int deleteConnectionId = Convert.ToInt32(col["actorId"]);
+            ConnectActorMovieDetail camd = new ConnectActorMovieDetail();
+            camd.ActorId = Convert.ToInt32(col["actorId"]);
+            camd.MovieId = Convert.ToInt32(col["movieId"]);
             string error = "";
             ActorMethods am = new ActorMethods();
 
-            int i = am.DeleteConnection(deleteConnectionId, out error);
+            int i = am.DeleteConnection(camd, out error);
 
             HttpContext.Session.SetString("errorDeleteConnect", error);
 

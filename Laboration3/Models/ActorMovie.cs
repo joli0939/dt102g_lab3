@@ -13,5 +13,6 @@ namespace Laboration3.Models
         public string Surname { get; set; }
         public string Movie { get; set; }
         public int ActorId { get; set; }
+        public int MovieId { get; set; }
     }
 }

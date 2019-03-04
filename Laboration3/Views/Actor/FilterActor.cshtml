@@ -55,6 +55,7 @@
             <td>
                 <form asp-action="DeleteConnection" method="post">
                     <input type="hidden" name="actorId" value="@actorMovieDetail.ActorId" />
+                    <input type="hidden" name="movieId" value="@actorMovieDetail.MovieId" />
                     <button type="submit" class="btn btn-danger btn-sm">Ta bort koppling</button>
                 </form>
             </td>

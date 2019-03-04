@@ -72,7 +72,7 @@ using Laboration3.Models;
             WriteLiteral("</p>\r\n\r\n<div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n        ");
             EndContext();
             BeginContext(255, 985, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "35453a3a931b48f5a8d8335b55f67708", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "dce5cfac2442471c828a39d44834c362", async() => {
                 BeginContext(296, 111, true);
                 WriteLiteral("\r\n            <div class=\"form-group\">\r\n                <select class=\"form-control\" id=\"Actor\" name=\"Actor\">\r\n");
                 EndContext();
@@ -86,7 +86,7 @@ using Laboration3.Models;
                 WriteLiteral("                        ");
                 EndContext();
                 BeginContext(548, 85, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "072ecec922874ebab5175521a4039e45", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5b855debe5b34a5285284dfd9eef99d1", async() => {
                     BeginContext(583, 20, false);
 #line 16 "C:\Users\admin\source\repos\Laboration3\Laboration3\Views\Actor\ConnectActorMovie.cshtml"
                                                      Write(actorDetail.Forename);
@@ -148,7 +148,7 @@ using Laboration3.Models;
                 WriteLiteral("                        ");
                 EndContext();
                 BeginContext(955, 60, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "07babf3bcdfd4842ad699938b06618f9", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fb1fb71263734b6781a269981554a443", async() => {
                     BeginContext(990, 16, false);
 #line 24 "C:\Users\admin\source\repos\Laboration3\Laboration3\Views\Actor\ConnectActorMovie.cshtml"
                                                      Write(MovieDetail.Name);

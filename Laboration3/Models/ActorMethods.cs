@@ -120,7 +120,7 @@ namespace Laboration3.Models
             dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Laboration3;Integrated Security=True";
 
             // SQL-sträng för att lägga till i databasen
-            String sqlstring = "SELECT Actor.Forename, Actor.Surname, Movie.Name, Actor.Id FROM((ConnectActorMovie INNER JOIN Actor ON ConnectActorMovie.ActorId = Actor.Id) INNER JOIN Movie ON ConnectActorMovie.MovieId = Movie.Id) ";
+            String sqlstring = "SELECT Actor.Forename, Actor.Surname, Movie.Name, Actor.Id AS 'ActorId', Movie.Id AS 'MovieId' FROM((ConnectActorMovie INNER JOIN Actor ON ConnectActorMovie.ActorId = Actor.Id) INNER JOIN Movie ON ConnectActorMovie.MovieId = Movie.Id)";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
             // Skapa en adapter
@@ -148,7 +148,8 @@ namespace Laboration3.Models
                         aMovie.Forename = myDS.Tables["myActorMovie"].Rows[i]["Forename"].ToString();
                         aMovie.Surname = myDS.Tables["myActorMovie"].Rows[i]["Surname"].ToString();
                         aMovie.Movie = myDS.Tables["myActorMovie"].Rows[i]["Name"].ToString();
-                        aMovie.ActorId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["Id"]);
+                        aMovie.ActorId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["ActorId"]);
+                        aMovie.MovieId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["MovieId"]);
 
                         i++;
                         ActorMovieList.Add(aMovie);
@@ -183,7 +184,7 @@ namespace Laboration3.Models
             dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Laboration3;Integrated Security=True";
 
             // SQL-sträng för att lägga till i databasen
-            String sqlstring = "SELECT Actor.Forename, Actor.Surname, Movie.Name, Actor.Id FROM((ConnectActorMovie INNER JOIN Actor ON ConnectActorMovie.ActorId = Actor.Id) INNER JOIN Movie ON ConnectActorMovie.MovieId = Movie.Id) WHERE Actor.Id = @filterID";
+            String sqlstring = "SELECT Actor.Forename, Actor.Surname, Movie.Name, Actor.Id AS 'ActorId', Movie.Id AS 'MovieId' FROM((ConnectActorMovie INNER JOIN Actor ON ConnectActorMovie.ActorId = Actor.Id) INNER JOIN Movie ON ConnectActorMovie.MovieId = Movie.Id) WHERE Actor.Id = @filterID";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
             dbCommand.Parameters.Add("filterID", SqlDbType.Int).Value = filterID;
@@ -213,7 +214,8 @@ namespace Laboration3.Models
                         aMovie.Forename = myDS.Tables["myActorMovie"].Rows[i]["Forename"].ToString();
                         aMovie.Surname = myDS.Tables["myActorMovie"].Rows[i]["Surname"].ToString();
                         aMovie.Movie = myDS.Tables["myActorMovie"].Rows[i]["Name"].ToString();
-                        aMovie.ActorId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["Id"]);
+                        aMovie.ActorId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["ActorId"]);
+                        aMovie.MovieId = Convert.ToInt32(myDS.Tables["myActorMovie"].Rows[i]["MovieId"]);
 
                         i++;
                         ActorMovieList.Add(aMovie);
@@ -251,7 +253,7 @@ namespace Laboration3.Models
             String sqlstring = "SELECT * FROM Actor WHERE Id = @actorId";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
-            dbCommand.Parameters.Add("actorId", SqlDbType.Int).Value = actorId;
+            dbCommand.Parameters.Add("userId", SqlDbType.NVarChar, 450).Value = userId;
 
             // Skapa en adapter
             SqlDataAdapter myAdapter = new SqlDataAdapter(dbCommand);
@@ -410,7 +412,7 @@ namespace Laboration3.Models
             }
         }
 
-        public int DeleteConnection(int deleteId, out string errormsg)
+        public int DeleteConnection(ConnectActorMovieDetail camd, out string errormsg)
         {
             // Skapa sql-anslutning
             SqlConnection dbConnection = new SqlConnection();
@@ -419,10 +421,11 @@ namespace Laboration3.Models
             dbConnection.ConnectionString = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=Laboration3;Integrated Security=True";
 
             // SQL-sträng för att lägga till i databasen
-            String sqlstring = "DELETE FROM ConnectActorMovie WHERE ActorId = @deleteId";
+            String sqlstring = "DELETE FROM ConnectActorMovie WHERE ActorId = @actorId AND MovieId = @movieId";
             SqlCommand dbCommand = new SqlCommand(sqlstring, dbConnection);
 
-            dbCommand.Parameters.Add("deleteId", SqlDbType.Int).Value = deleteId;
+            dbCommand.Parameters.Add("actorId", SqlDbType.Int).Value = camd.ActorId;
+            dbCommand.Parameters.Add("movieId", SqlDbType.Int).Value = camd.MovieId;
 
             try
             {

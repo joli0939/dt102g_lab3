@@ -70,7 +70,7 @@ using Laboration3.Models;
             WriteLiteral("\r\n<h2>Filmer</h2>\r\n\r\n<h3>Sök film</h3>\r\n<div class=\"row\">\r\n    <div class=\"form-group col-md-4\">\r\n        ");
             EndContext();
             BeginContext(206, 325, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4bb3451b74ed4df09fd53aee312efa3f", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e184f8023883439594ca1d022bb43f4f", async() => {
                 BeginContext(237, 287, true);
                 WriteLiteral(@"
             <div class=""form-group"">
@@ -239,12 +239,12 @@ using Laboration3.Models;
             WriteLiteral("\r\n                </td>\r\n                <td class=\"text-center\">\r\n                    ");
             EndContext();
             BeginContext(2385, 370, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4ed49256a96c467dbd9ae84251bbf3c5", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bcb54b8f09c7406c97f96d68b8c520ff", async() => {
                 BeginContext(2430, 26, true);
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(2456, 95, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "277f0c9c15684c889308d396ca152280", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "fc9dfbe9f08740448cac256c0c8f0583", async() => {
                     BeginContext(2542, 5, true);
                     WriteLiteral("Ändra");
                     EndContext();
@@ -337,7 +337,7 @@ else
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(2885, 50, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "90f969d3cead4043b604fb78621bd027", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a90548e181d84be190c11aad6db23e0f", async() => {
                 BeginContext(2917, 14, true);
                 WriteLiteral("Lägg till film");
                 EndContext();
